@@ -1,0 +1,20 @@
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/erb-6.0.7/ext/erb/escape
+C:/Ruby34-x64/bin/ruby.exe extconf.rb
+checking for rb_ext_ractor_safe() in ruby.h... yes
+creating Makefile
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/erb-6.0.7/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-iel9ym sitelibdir\=./.gem.20261017-30568-iel9ym clean
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/erb-6.0.7/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-iel9ym sitelibdir\=./.gem.20261017-30568-iel9ym
+generating escape-x64-mingw-ucrt.def
+compiling escape.c
+linking shared-object erb/escape.so
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/erb-6.0.7/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-iel9ym sitelibdir\=./.gem.20261017-30568-iel9ym install
+/usr/bin/install -c -m 0755 escape.so ./.gem.20261017-30568-iel9ym/erb
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/erb-6.0.7/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-iel9ym sitelibdir\=./.gem.20261017-30568-iel9ym clean

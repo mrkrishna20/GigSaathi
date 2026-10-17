@@ -1,0 +1,20 @@
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/debug-1.11.1/ext/debug
+C:/Ruby34-x64/bin/ruby.exe extconf.rb
+creating Makefile
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/debug-1.11.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-4u8zi6 sitelibdir\=./.gem.20261017-30568-4u8zi6 clean
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/debug-1.11.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-4u8zi6 sitelibdir\=./.gem.20261017-30568-4u8zi6
+generating debug-x64-mingw-ucrt.def
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/debug-1.11.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-4u8zi6 sitelibdir\=./.gem.20261017-30568-4u8zi6 install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20261017-30568-4u8zi6/debug
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/debug-1.11.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-4u8zi6 sitelibdir\=./.gem.20261017-30568-4u8zi6 clean

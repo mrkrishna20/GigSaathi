@@ -1,0 +1,19 @@
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/websocket-driver-0.8.2/ext/websocket-driver
+C:/Ruby34-x64/bin/ruby.exe extconf.rb
+creating Makefile
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/websocket-driver-0.8.2/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-9xws7v sitelibdir\=./.gem.20261017-30568-9xws7v clean
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/websocket-driver-0.8.2/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-9xws7v sitelibdir\=./.gem.20261017-30568-9xws7v
+generating websocket_mask-x64-mingw-ucrt.def
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/websocket-driver-0.8.2/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-9xws7v sitelibdir\=./.gem.20261017-30568-9xws7v install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20261017-30568-9xws7v
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/websocket-driver-0.8.2/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-9xws7v sitelibdir\=./.gem.20261017-30568-9xws7v clean

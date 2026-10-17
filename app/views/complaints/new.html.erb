@@ -1,0 +1,38 @@
+<main class="page-shell">
+  <div class="container">
+    <div class="page-heading">
+      <%= link_to "← Back home", root_path, class: "back-link" %>
+      <span class="eyebrow">SAY IT CLEARLY, YOUR WAY</span>
+      <h1>Complaint Help</h1>
+      <p>Tell us what happened. Get a professional draft that you can edit before sending.</p>
+    </div>
+
+    <div class="complaint-layout">
+      <section class="workspace-card">
+        <div class="workspace-intro"><span class="card-icon icon-orange" aria-hidden="true">✉</span><div><h2>What happened?</h2><p>A few details help make your draft more useful.</p></div></div>
+        <% if @error %><div class="notice notice-error" role="alert"><%= @error %></div><% end %>
+        <%= form_with url: generate_complaint_path, method: :post, class: "stacked-form" do |form| %>
+          <div class="field"><%= form.label :category, "Choose a category" %><%= form.select :category, [["Delayed payment", "delayed_payment"], ["Unfair deduction", "unfair_deduction"], ["Account deactivation", "account_deactivation"], ["Other work-related issue", "other_work_issue"]], { selected: @category }, required: true %></div>
+          <div class="field"><%= form.label :company_name, "Company or platform (optional)" %><%= form.text_field :company_name, value: @company_name, maxlength: 100, placeholder: "e.g. your delivery platform" %></div>
+          <div class="field"><%= form.label :description, "Describe the issue" %><%= form.text_area :description, value: @description, rows: 6, maxlength: 4000, placeholder: "What happened? Include dates or amounts only if you know them.", required: true %><span class="field-help">Include only details you are comfortable sharing. Please don't add passwords or account credentials.</span></div>
+          <div class="field field-short"><%= form.label :language, "Draft language" %><%= form.select :language, [["English", "english"], ["Hindi", "hindi"]], { selected: @language || "english" } %></div>
+          <%= form.submit "Generate my draft", class: "button button-primary" %>
+        <% end %>
+      </section>
+
+      <section class="workspace-card draft-card" aria-live="polite">
+        <div class="workspace-intro"><span class="card-icon icon-green" aria-hidden="true">✎</span><div><h2>Your complaint draft</h2><p>Review it carefully and edit anything you need.</p></div></div>
+        <% if @complaint.present? %>
+          <label class="visually-hidden" for="complaint-draft">Editable complaint draft</label>
+          <textarea id="complaint-draft" class="draft-textarea" rows="16"><%= @complaint %></textarea>
+          <button type="button" class="button button-secondary button-full" data-copy-target="complaint-draft">Copy complaint</button>
+          <p class="copy-status field-help" aria-live="polite"></p>
+          <p class="disclaimer">This is an AI-generated draft. Check all details and edit it before sending.</p>
+        <% else %>
+          <div class="empty-state draft-empty"><span class="empty-icon" aria-hidden="true">✎</span><h3>Your draft will appear here</h3><p>Once you describe the issue, we'll help put it into words. You can edit or copy it before sending.</p></div>
+        <% end %>
+      </section>
+    </div>
+    <div class="info-strip"><span aria-hidden="true">ⓘ</span><p>Your draft uses the details you provide. It is not legal advice, and you should review it before sharing it with anyone.</p></div>
+  </div>
+</main>

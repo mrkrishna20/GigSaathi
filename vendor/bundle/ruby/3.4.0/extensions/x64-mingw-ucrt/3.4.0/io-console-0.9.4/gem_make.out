@@ -1,0 +1,30 @@
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/io-console-0.9.4/ext/io/console
+C:/Ruby34-x64/bin/ruby.exe extconf.rb
+checking for rb_interned_str_cstr()... yes
+checking for rb_ractor_local_storage_value_newkey()... yes
+checking for rb_io_descriptor() in ruby/io.h... yes
+checking for rb_io_path() in ruby/io.h... yes
+checking for rb_io_closed_p() in ruby/io.h... yes
+checking for rb_io_open_descriptor() in ruby/io.h... yes
+checking for HAVE_RUBY_FIBER_SCHEDULER_H... yes
+checking for rb_category_warn()... yes
+checking for RB_WARN_CATEGORY_DEPRECATED... yes
+checking for rb_prepend_module()... yes
+checking for gperf... no
+creating Makefile
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/io-console-0.9.4/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-ymac1g sitelibdir\=./.gem.20261017-30568-ymac1g clean
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/io-console-0.9.4/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-ymac1g sitelibdir\=./.gem.20261017-30568-ymac1g
+generating console-x64-mingw-ucrt.def
+compiling console.c
+linking shared-object io/console.so
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/io-console-0.9.4/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-ymac1g sitelibdir\=./.gem.20261017-30568-ymac1g install
+/usr/bin/install -c -m 0755 console.so ./.gem.20261017-30568-ymac1g/io
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/io-console-0.9.4/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-ymac1g sitelibdir\=./.gem.20261017-30568-ymac1g clean

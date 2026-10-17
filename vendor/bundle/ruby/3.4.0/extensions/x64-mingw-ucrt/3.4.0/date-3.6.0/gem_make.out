@@ -1,0 +1,27 @@
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/date-3.6.0/ext/date
+C:/Ruby34-x64/bin/ruby.exe extconf.rb
+checking for rb_category_warn()... yes
+checking for timezone in time.h with -Werror... no
+checking for altzone in time.h with -Werror... no
+checking for rb_gc_mark_movable() in ruby.h... yes
+checking for RUBY_TYPED_EMBEDDABLE in ruby.h... yes
+creating Makefile
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/date-3.6.0/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-r94lpw sitelibdir\=./.gem.20261017-30568-r94lpw clean
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/date-3.6.0/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-r94lpw sitelibdir\=./.gem.20261017-30568-r94lpw
+generating date_core-x64-mingw-ucrt.def
+compiling date_core.c
+compiling date_parse.c
+compiling date_strftime.c
+compiling date_strptime.c
+linking shared-object date_core.so
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/date-3.6.0/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-r94lpw sitelibdir\=./.gem.20261017-30568-r94lpw install
+/usr/bin/install -c -m 0755 date_core.so ./.gem.20261017-30568-r94lpw
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/date-3.6.0/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-r94lpw sitelibdir\=./.gem.20261017-30568-r94lpw clean

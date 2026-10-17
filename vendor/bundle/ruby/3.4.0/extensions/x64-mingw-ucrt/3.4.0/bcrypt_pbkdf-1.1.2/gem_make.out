@@ -1,0 +1,23 @@
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/bcrypt_pbkdf-1.1.2/ext/mri
+C:/Ruby34-x64/bin/ruby.exe extconf.rb
+creating Makefile
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/bcrypt_pbkdf-1.1.2/ext/mri
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-j56bvb sitelibdir\=./.gem.20261017-30568-j56bvb clean
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/bcrypt_pbkdf-1.1.2/ext/mri
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-j56bvb sitelibdir\=./.gem.20261017-30568-j56bvb
+generating bcrypt_pbkdf_ext-x64-mingw-ucrt.def
+compiling bcrypt_pbkdf.c
+compiling bcrypt_pbkdf_ext.c
+compiling blowfish.c
+compiling explicit_bzero.c
+compiling hash_sha512.c
+linking shared-object bcrypt_pbkdf_ext.so
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/bcrypt_pbkdf-1.1.2/ext/mri
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-j56bvb sitelibdir\=./.gem.20261017-30568-j56bvb install
+/usr/bin/install -c -m 0755 bcrypt_pbkdf_ext.so ./.gem.20261017-30568-j56bvb
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/bcrypt_pbkdf-1.1.2/ext/mri
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-j56bvb sitelibdir\=./.gem.20261017-30568-j56bvb clean

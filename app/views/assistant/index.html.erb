@@ -1,0 +1,35 @@
+<main class="page-shell">
+  <div class="container">
+    <div class="page-heading">
+      <%= link_to "← Back home", root_path, class: "back-link" %>
+      <span class="eyebrow">HERE FOR YOUR QUESTIONS</span>
+      <h1>AI Assistant</h1>
+      <p>Ask about work, safety, or welfare schemes. Get a simple answer in the language you choose.</p>
+    </div>
+
+    <div class="workspace-card">
+      <div class="workspace-intro"><span class="card-icon icon-purple" aria-hidden="true">✳</span><div><h2>What would you like to know?</h2><p>Share one question at a time for the clearest help.</p></div></div>
+      <% if @error %><div class="notice notice-error" role="alert"><%= @error %></div><% end %>
+      <%= form_with url: ask_assistant_path, method: :post, class: "stacked-form" do |form| %>
+        <div class="field">
+          <%= form.label :question, "Your question" %>
+          <%= form.text_area :question, value: @question, rows: 5, maxlength: 2000, placeholder: "For example: What safety steps can I take when working late?", required: true %>
+          <span class="field-help">Please don't include passwords or sensitive personal information.</span>
+        </div>
+        <div class="field field-short">
+          <%= form.label :language, "Answer in" %>
+          <%= form.select :language, [["English", "english"], ["Hindi", "hindi"], ["Hinglish", "hinglish"]], { selected: @language || "english" } %>
+        </div>
+        <%= form.submit "Get a helpful answer", class: "button button-primary" %>
+      <% end %>
+      <% if @answer.present? %>
+        <section class="answer-panel" aria-live="polite" aria-labelledby="answer-title">
+          <div class="answer-heading"><span class="eyebrow">A HELPFUL STARTING POINT</span><h2 id="answer-title">Your answer</h2></div>
+          <div class="answer-copy"><%= simple_format(@answer) %></div>
+          <p class="disclaimer">AI can make mistakes. For current scheme details or legal decisions, confirm with an official source.</p>
+        </section>
+      <% end %>
+    </div>
+    <div class="info-strip"><span aria-hidden="true">ⓘ</span><p>We aim to keep guidance clear and honest. Scheme rules can vary by location, so always verify details with an official government source.</p></div>
+  </div>
+</main>

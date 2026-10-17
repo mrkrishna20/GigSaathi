@@ -1,0 +1,63 @@
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="status-dot"></span> A little more support in every shift</span>
+        <h1>Your work is important.<br><span>Your support should be too.</span></h1>
+        <p>Clear answers, a better view of your earnings, and help finding the words when something isn't right.</p>
+        <%= link_to assistant_path, class: "button button-primary" do %>
+          Meet your AI assistant <span aria-hidden="true">&rarr;</span>
+        <% end %>
+        <div class="trust-note"><span aria-hidden="true">&#10003;</span> Simple and made for workers like you</div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="sun-disc"></div>
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="hero-card hero-card-top"><span class="mini-icon mint">₹</span><span><strong>Every rupee counts</strong><small>Know what you really take home</small></span></div>
+        <div class="worker-illustration"><span class="helmet"></span><span class="face"></span><span class="body"></span><span class="bag"><i></i></span><span class="arm"></span></div>
+        <div class="hero-card hero-card-bottom"><span class="sparkle" aria-hidden="true">✳</span><span><strong>Here when you need us</strong><small>Helpful guidance, in your language</small></span></div>
+        <span class="floating-star star-one" aria-hidden="true">✳</span>
+        <span class="floating-star star-two" aria-hidden="true">✦</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="container services-section">
+    <div class="section-heading">
+      <div><span class="eyebrow">YOUR EVERYDAY COMPANION</span><h2>Three ways we can help</h2></div>
+      <p>Made for real workdays, from your first shift to the last delivery.</p>
+    </div>
+    <div class="service-grid">
+      <%= link_to assistant_path, class: "service-card assistant-card" do %>
+        <span class="card-icon icon-purple" aria-hidden="true">✳</span>
+        <span class="card-tag">ASK ANYTHING</span>
+        <h3>AI Assistant</h3>
+        <p>Get clear, friendly guidance about work, safety, and welfare schemes—in English, Hindi, or Hinglish.</p>
+        <span class="card-link">Ask a question <span aria-hidden="true">&rarr;</span></span>
+      <% end %>
+      <%= link_to earnings_path, class: "service-card earnings-card" do %>
+        <span class="card-icon icon-green" aria-hidden="true">₹</span>
+        <span class="card-tag">YOUR MONEY, CLEARER</span>
+        <h3>My Earnings</h3>
+        <p>Track what you earn and spend each day. See your take-home amount at a glance.</p>
+        <span class="card-link">Track your earnings <span aria-hidden="true">&rarr;</span></span>
+      <% end %>
+      <%= link_to new_complaint_path, class: "service-card complaint-card" do %>
+        <span class="card-icon icon-orange" aria-hidden="true">✉</span>
+        <span class="card-tag">FIND YOUR WORDS</span>
+        <h3>Complaint Help</h3>
+        <p>Turn a work problem into a clear, professional complaint you can review and edit.</p>
+        <span class="card-link">Draft a complaint <span aria-hidden="true">&rarr;</span></span>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="bottom-note">
+    <div class="container note-inner">
+      <span class="note-spark" aria-hidden="true">✦</span>
+      <div><strong>You do a lot. You deserve a little backup.</strong><p>GigSaathi is here to make your workday feel a bit easier.</p></div>
+      <%= link_to "Get started", assistant_path, class: "button button-light" %>
+    </div>
+  </section>
+</main>

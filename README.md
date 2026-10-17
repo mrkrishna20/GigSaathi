@@ -27,14 +27,13 @@ Rails 8.1.4 is specified in the Gemfile. The application can start without an AI
    bin/rails db:create db:migrate
    ```
 
-5. (Optional) Configure an LLM API key and model:
+5. (Optional) Enable the AI features by adding your provider-issued key to `.env`:
 
    ```powershell
-   $env:LLM_API_KEY = "your-api-key"
-   $env:LLM_MODEL = "gpt-4o-mini"
+   LLM_API_KEY=your-llm-api-key
    ```
 
-   `LLM_API_KEY` is preferred; `OPENAI_API_KEY` is also accepted. The default endpoint is OpenAI's chat-completions API. For another compatible provider, set `LLM_API_URL` to its chat-completions endpoint and set `LLM_MODEL` to a supported model. Keep credentials in your shell/environment configuration, never in source control.
+   Replace `your-llm-api-key` with your actual key. `LLM_API_KEY` is preferred; `OPENAI_API_KEY` is also accepted. The default endpoint is OpenAI's chat-completions API, using the `gpt-4o-mini` model. For another compatible provider, set `LLM_API_URL` to its chat-completions endpoint and `LLM_MODEL` to a supported model. `.env` is ignored by Git; never commit your API key. Restart the Rails server after changing `.env`.
 
 6. Start the web server:
 

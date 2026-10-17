@@ -1,0 +1,18 @@
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/nio4r-2.7.5/ext/nio4r
+C:/Ruby34-x64/bin/ruby.exe extconf.rb
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/nio4r-2.7.5/ext/nio4r
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-59am8e sitelibdir\=./.gem.20261017-30568-59am8e clean
+make: *** No rule to make target 'clean'.  Stop.
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/nio4r-2.7.5/ext/nio4r
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-59am8e sitelibdir\=./.gem.20261017-30568-59am8e
+make: Nothing to be done for 'all'.
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/nio4r-2.7.5/ext/nio4r
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-59am8e sitelibdir\=./.gem.20261017-30568-59am8e install
+make: Nothing to be done for 'install'.
+
+current directory: D:/Files/GigSaathi/vendor/bundle/ruby/3.4.0/gems/nio4r-2.7.5/ext/nio4r
+make DESTDIR\= sitearchdir\=./.gem.20261017-30568-59am8e sitelibdir\=./.gem.20261017-30568-59am8e clean
+make: *** No rule to make target 'clean'.  Stop.

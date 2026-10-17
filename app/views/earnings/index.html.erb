@@ -1,0 +1,47 @@
+<main class="page-shell">
+  <div class="container">
+    <div class="page-heading">
+      <%= link_to "← Back home", root_path, class: "back-link" %>
+      <span class="eyebrow">YOUR WORK, YOUR NUMBERS</span>
+      <h1>My Earnings</h1>
+      <p>Keep track of what you earn and spend, one workday at a time.</p>
+    </div>
+
+    <% if flash[:notice] %><div class="notice notice-success" role="status"><%= flash[:notice] %></div><% end %>
+    <div class="earnings-layout">
+      <section class="workspace-card earnings-form-card">
+        <div class="workspace-intro"><span class="card-icon icon-green" aria-hidden="true">₹</span><div><h2>Add a workday</h2><p>Your take-home amount is calculated automatically.</p></div></div>
+        <% if @earning.errors.any? %>
+          <div class="notice notice-error" role="alert"><strong>Please check these details:</strong><ul><% @earning.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul></div>
+        <% end %>
+        <%= form_with model: @earning, class: "stacked-form" do |form| %>
+          <div class="field"><%= form.label :work_date, "Work date" %><%= form.date_field :work_date, required: true %></div>
+          <div class="field"><%= form.label :total_earnings, "Total earnings (₹)" %><%= form.number_field :total_earnings, min: 0, max: 99999999.99, step: 0.01, placeholder: "0.00", required: true %></div>
+          <div class="form-divider"><span>YOUR EXPENSES</span></div>
+          <div class="field"><%= form.label :fuel_expenses, "Fuel (₹)" %><%= form.number_field :fuel_expenses, min: 0, max: 99999999.99, step: 0.01, placeholder: "0.00", value: @earning.fuel_expenses || 0 %></div>
+          <div class="field"><%= form.label :food_expenses, "Food (₹)" %><%= form.number_field :food_expenses, min: 0, max: 99999999.99, step: 0.01, placeholder: "0.00", value: @earning.food_expenses || 0 %></div>
+          <div class="field"><%= form.label :other_expenses, "Other expenses (₹)" %><%= form.number_field :other_expenses, min: 0, max: 99999999.99, step: 0.01, placeholder: "0.00", value: @earning.other_expenses || 0 %></div>
+          <%= form.submit "Save this workday", class: "button button-primary button-full" %>
+        <% end %>
+      </section>
+
+      <section class="workspace-card history-card">
+        <div class="workspace-intro history-intro"><span class="card-icon icon-purple" aria-hidden="true">▤</span><div><h2>Previous entries</h2><p>Your workday records, newest first.</p></div></div>
+        <% if @earnings.any? %>
+          <div class="earnings-list">
+            <% @earnings.each do |earning| %>
+              <article class="earning-entry">
+                <div class="entry-heading"><div><span class="entry-date"><%= earning.work_date.strftime("%A, %d %b %Y") %></span><strong><%= number_to_currency(earning.net_earnings, unit: "₹", precision: 2, delimiter: ",") %></strong></div>
+                  <%= button_to "Delete", earning_path(earning), method: :delete, class: "delete-button", form: { data: { turbo_confirm: "Delete this earnings entry?" } } %>
+                </div>
+                <div class="entry-breakdown"><span>Earned <b><%= number_to_currency(earning.total_earnings, unit: "₹", precision: 2, delimiter: ",") %></b></span><span>Expenses <b><%= number_to_currency(earning.total_expenses, unit: "₹", precision: 2, delimiter: ",") %></b></span></div>
+              </article>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="empty-state"><span class="empty-icon" aria-hidden="true">₹</span><h3>Your first entry starts here</h3><p>Add a workday to see your earnings and expenses together.</p></div>
+        <% end %>
+      </section>
+    </div>
+  </div>
+</main>

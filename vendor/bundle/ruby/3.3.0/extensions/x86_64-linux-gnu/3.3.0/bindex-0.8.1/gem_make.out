@@ -1,0 +1,18 @@
+current directory: /mnt/d/Files/GigSaathi/vendor/bundle/ruby/3.3.0/gems/bindex-0.8.1/ext/skiptrace
+/usr/bin/ruby3.3 -I/usr/lib/ruby/vendor_ruby extconf.rb
+creating Makefile
+
+current directory: /mnt/d/Files/GigSaathi/vendor/bundle/ruby/3.3.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20261017-3714-qswk7s sitelibdir\=./.gem.20261017-3714-qswk7s clean
+
+current directory: /mnt/d/Files/GigSaathi/vendor/bundle/ruby/3.3.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20261017-3714-qswk7s sitelibdir\=./.gem.20261017-3714-qswk7s
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.so
+
+current directory: /mnt/d/Files/GigSaathi/vendor/bundle/ruby/3.3.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20261017-3714-qswk7s sitelibdir\=./.gem.20261017-3714-qswk7s install
+/usr/bin/install -c -m 0755 cruby.so ./.gem.20261017-3714-qswk7s/skiptrace/internal
+
+current directory: /mnt/d/Files/GigSaathi/vendor/bundle/ruby/3.3.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20261017-3714-qswk7s sitelibdir\=./.gem.20261017-3714-qswk7s clean
