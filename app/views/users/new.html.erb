@@ -1,0 +1,38 @@
+<main class="page-shell">
+  <div class="container auth-container">
+    <div class="page-heading">
+      <%= link_to "← Back home", root_path, class: "back-link" %>
+      <span class="eyebrow">A PRIVATE SPACE FOR YOUR WORKDAY</span>
+      <h1>Create your account</h1>
+      <p>Your earnings entries are visible only after you sign in to your account.</p>
+    </div>
+
+    <section class="workspace-card auth-card" aria-labelledby="sign-up-title">
+      <div class="workspace-intro"><span class="card-icon icon-green" aria-hidden="true">+</span><div><h2 id="sign-up-title">Get started with GigSaathi</h2><p>A few details to keep your earnings private.</p></div></div>
+      <% if @error %><div class="notice notice-error" role="alert"><%= @error %></div><% end %>
+      <% if @user.errors.any? %>
+        <div class="notice notice-error" role="alert" aria-labelledby="account-errors-title">
+          <strong id="account-errors-title">Please check these details:</strong>
+          <ul><% @user.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul>
+        </div>
+      <% end %>
+      <%= form_with model: @user, url: users_path, class: "stacked-form" do |form| %>
+        <div class="field">
+          <%= form.label :email, "Email address" %>
+          <%= form.email_field :email, required: true, maxlength: 254, autocomplete: "email", inputmode: "email" %>
+        </div>
+        <div class="field">
+          <%= form.label :password, "Password (at least 12 characters)" %>
+          <%= form.password_field :password, required: true, minlength: 12, maxlength: 72, autocomplete: "new-password", aria: { describedby: "password-help" } %>
+          <span id="password-help" class="field-help">Choose a password you don't use for other accounts.</span>
+        </div>
+        <div class="field">
+          <%= form.label :password_confirmation, "Confirm password" %>
+          <%= form.password_field :password_confirmation, required: true, minlength: 12, maxlength: 72, autocomplete: "new-password" %>
+        </div>
+        <%= form.submit "Create my account", class: "button button-primary button-full", data: { turbo_submits_with: "Creating account..." } %>
+      <% end %>
+      <p class="auth-switch">Already have an account? <%= link_to "Sign in", new_session_path %></p>
+    </section>
+  </div>
+</main>

@@ -7,7 +7,7 @@ GigSaathi is a small Rails application for gig workers and daily-wage workers. I
 - Ruby 3.4.10 (see `.ruby-version`)
 - Bundler 2.5 or newer
 - PostgreSQL 14 or newer, running locally or reachable from the app
-- A compatible chat-completions API key to enable AI features (optional)
+- A PostgreSQL database and optional compatible chat-completions API key
 
 Rails 8.1.4 is specified in the Gemfile. The application can start without an AI key; the two AI features display a clear setup message until one is configured.
 
@@ -27,15 +27,16 @@ Rails 8.1.4 is specified in the Gemfile. The application can start without an AI
    bin/rails db:create db:migrate
    ```
 
-5. (Optional) Enable the AI features by adding your provider-issued key to `.env`:
+5. Register a worker account in the app before recording earnings. Earnings entries are private to the signed-in account; sign-in and account creation are rate-limited.
+6. (Optional) Enable the AI features by adding your provider-issued key to `.env`:
 
    ```powershell
-   LLM_API_KEY=your-llm-api-key
+   GROQ_API_KEY=your-groq-api-key
    ```
 
-   Replace `your-llm-api-key` with your actual key. `LLM_API_KEY` is preferred; `OPENAI_API_KEY` is also accepted. The default endpoint is OpenAI's chat-completions API, using the `gpt-4o-mini` model. For another compatible provider, set `LLM_API_URL` to its chat-completions endpoint and `LLM_MODEL` to a supported model. `.env` is ignored by Git; never commit your API key. Restart the Rails server after changing `.env`.
+   Replace `your-groq-api-key` with the key from GroqCloud. `GROQ_API_KEY` or the generic `LLM_API_KEY` uses Groq's OpenAI-compatible chat-completions endpoint and the `openai/gpt-oss-120b` model by default. `OPENAI_API_KEY` alone retains OpenAI's endpoint and `gpt-4o-mini` model. Override `LLM_API_URL` and `LLM_MODEL` when using a different compatible provider/model. The server needs outbound HTTPS and DNS access to `api.groq.com`; if the assistant reports a connection failure, check the server's internet, DNS, firewall, or proxy settings. Requests are capped at 20 per IP address every three minutes across both AI features. `.env` is ignored by Git; never commit your API key. Restart the Rails server after changing `.env`.
 
-6. Start the web server:
+7. Start the web server:
 
    ```powershell
    bin/rails server
@@ -49,7 +50,9 @@ Rails 8.1.4 is specified in the Gemfile. The application can start without an AI
 - **My Earnings** — Save a work date, total earnings, fuel, food, and other expenses. The app calculates take-home earnings and lists previous entries. Amounts cannot be negative.
 - **Complaint Help** — Generate a draft in English or Hindi for delayed payments, unfair deductions, account deactivation, or another work issue. The draft uses only the worker's description, can be edited in the page, and can be copied to the clipboard. Review it before sending.
 
-The MVP does not include user accounts: earnings entries are shared by anyone who can access the same deployment. Do not deploy it with real personal or financial data until authentication and per-user data access have been added.
+Passwords are stored as bcrypt hashes, and each earnings query and delete is scoped to the signed-in account. Account recovery is not implemented, so workers should use a password manager and avoid reusing an existing password. The original MVP stored earnings without an owner; an upgrade preserves those old rows in the database but they will not appear in any account until an administrator assigns them to their owner.
+
+Production is configured to enforce HTTPS. Terminate TLS at the hosting platform or reverse proxy and enable proxy SSL forwarding before deployment.
 
 ## Tests
 

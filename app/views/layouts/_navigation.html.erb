@@ -8,6 +8,13 @@
       <%= link_to "AI Assistant", assistant_path %>
       <%= link_to "My Earnings", earnings_path %>
       <%= link_to "Complaint Help", new_complaint_path %>
+      <% if current_user %>
+        <span class="nav-account"><%= current_user.email %></span>
+        <%= button_to "Sign out", destroy_session_path, method: :delete, class: "nav-button" %>
+      <% else %>
+        <%= link_to "Sign in", new_session_path %>
+        <%= link_to "Create account", new_user_path, class: "nav-signup" %>
+      <% end %>
     </nav>
   </div>
 </header>

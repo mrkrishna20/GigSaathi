@@ -7,7 +7,8 @@ class EarningTest < ActiveSupport::TestCase
       total_earnings: 1_250,
       fuel_expenses: 150,
       food_expenses: 75,
-      other_expenses: 25
+      other_expenses: 25,
+      user: User.new
     )
 
     assert_equal BigDecimal("250"), earning.total_expenses
@@ -20,7 +21,8 @@ class EarningTest < ActiveSupport::TestCase
       total_earnings: 600,
       fuel_expenses: "",
       food_expenses: nil,
-      other_expenses: "  "
+      other_expenses: "  ",
+      user: User.new
     )
 
     assert earning.valid?
@@ -34,7 +36,8 @@ class EarningTest < ActiveSupport::TestCase
       total_earnings: 200,
       fuel_expenses: -1,
       food_expenses: 0,
-      other_expenses: 0
+      other_expenses: 0,
+      user: User.new
     )
 
     assert_not earning.valid?
@@ -42,9 +45,28 @@ class EarningTest < ActiveSupport::TestCase
   end
 
   test "rejects amounts above the database precision" do
-    earning = Earning.new(work_date: Date.current, total_earnings: 100_000_000)
+    earning = Earning.new(work_date: Date.current, total_earnings: 100_000_000, user: User.new)
 
     assert_not earning.valid?
     assert_includes earning.errors.attribute_names, :total_earnings
+  end
+
+  test "rejects malformed nonblank expense input instead of treating it as zero" do
+    earning = Earning.new(
+      work_date: Date.current,
+      total_earnings: 200,
+      fuel_expenses: "not-an-amount",
+      user: User.new
+    )
+
+    assert_not earning.valid?
+    assert_includes earning.errors.attribute_names, :fuel_expenses
+  end
+
+  test "requires an owner for every earnings entry" do
+    earning = Earning.new(work_date: Date.current, total_earnings: 200)
+
+    assert_not earning.valid?
+    assert_includes earning.errors.attribute_names, :user
   end
 end

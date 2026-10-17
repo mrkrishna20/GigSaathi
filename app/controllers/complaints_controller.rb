@@ -1,4 +1,6 @@
 class ComplaintsController < ApplicationController
+  rate_limit to: 20, within: 3.minutes, scope: :llm_generation, only: :create, with: :ai_rate_limit_exceeded
+
   CATEGORIES = {
     "delayed_payment" => "Delayed payment",
     "unfair_deduction" => "Unfair deduction",
@@ -44,5 +46,11 @@ class ComplaintsController < ApplicationController
 
   def sanitize_field(value)
     value.to_s.strip.gsub(/[[:cntrl:]]+/, " ")
+  end
+
+  def ai_rate_limit_exceeded
+    @language = "english"
+    @error = "Too many AI requests. Please wait a few minutes and try again."
+    render :new, status: :too_many_requests
   end
 end

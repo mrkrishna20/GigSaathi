@@ -16,7 +16,8 @@
           <div class="field"><%= form.label :company_name, "Company or platform (optional)" %><%= form.text_field :company_name, value: @company_name, maxlength: 100, placeholder: "e.g. your delivery platform" %></div>
           <div class="field"><%= form.label :description, "Describe the issue" %><%= form.text_area :description, value: @description, rows: 6, maxlength: 4000, placeholder: "What happened? Include dates or amounts only if you know them.", required: true %><span class="field-help">Include only details you are comfortable sharing. Please don't add passwords or account credentials.</span></div>
           <div class="field field-short"><%= form.label :language, "Draft language" %><%= form.select :language, [["English", "english"], ["Hindi", "hindi"]], { selected: @language || "english" } %></div>
-          <%= form.submit "Generate my draft", class: "button button-primary" %>
+          <p class="privacy-note">Your description will be sent to your configured AI provider to draft this complaint. Please leave out details you don't want to share.</p>
+          <%= form.submit "Generate my draft", class: "button button-primary", data: { turbo_submits_with: "Generating your draft..." } %>
         <% end %>
       </section>
 

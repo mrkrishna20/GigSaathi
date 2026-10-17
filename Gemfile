@@ -6,6 +6,7 @@ gem "rails", "~> 8.1.4"
 gem "propshaft"
 # Use PostgreSQL as the database for Active Record
 gem "pg", ">= 1.5"
+gem "bcrypt", "~> 3.1"
 # Load local PostgreSQL credentials from .env in development and test.
 gem "dotenv-rails", groups: %i[development test]
 # Use the Puma web server [https://github.com/puma/puma]

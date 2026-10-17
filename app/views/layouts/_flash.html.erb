@@ -1,0 +1,6 @@
+<% flash.each do |type, message| %>
+  <% alert = type.to_s == "alert" %>
+  <div class="container">
+    <div class="notice <%= alert ? 'notice-error' : 'notice-success' %>" role="<%= alert ? 'alert' : 'status' %>"><%= message %></div>
+  </div>
+<% end %>

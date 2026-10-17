@@ -7,29 +7,42 @@
       <p>Ask about work, safety, or welfare schemes. Get a simple answer in the language you choose.</p>
     </div>
 
-    <div class="workspace-card">
-      <div class="workspace-intro"><span class="card-icon icon-purple" aria-hidden="true">✳</span><div><h2>What would you like to know?</h2><p>Share one question at a time for the clearest help.</p></div></div>
-      <% if @error %><div class="notice notice-error" role="alert"><%= @error %></div><% end %>
-      <%= form_with url: ask_assistant_path, method: :post, class: "stacked-form" do |form| %>
-        <div class="field">
-          <%= form.label :question, "Your question" %>
-          <%= form.text_area :question, value: @question, rows: 5, maxlength: 2000, placeholder: "For example: What safety steps can I take when working late?", required: true %>
-          <span class="field-help">Please don't include passwords or sensitive personal information.</span>
-        </div>
+    <section class="workspace-card chat-card" aria-labelledby="chat-title">
+      <div class="workspace-intro">
+        <span class="card-icon icon-purple" aria-hidden="true">✳</span>
+        <div><h2 id="chat-title">Your GigSaathi chat</h2><p>Ask a question and continue the conversation without leaving this page.</p></div>
+      </div>
+
+      <div class="chat-messages" data-chat-messages aria-label="Chat messages" aria-live="polite" aria-relevant="additions text">
+        <article class="chat-message assistant-message">
+          <span class="chat-avatar" aria-hidden="true">g</span>
+          <div class="chat-bubble">
+            <strong>GigSaathi</strong>
+            <p>Namaste! Ask me about worker safety, rights, or welfare schemes. I’ll do my best to help.</p>
+          </div>
+        </article>
+      </div>
+
+      <p class="chat-status field-help" data-chat-status role="status" aria-live="polite"></p>
+      <div class="notice notice-error" data-chat-error role="alert" <%= "hidden" unless @error.present? %>><%= @error %></div>
+
+      <%= form_with url: ask_assistant_path, method: :post, class: "chat-form", data: { chat_form: true, turbo: false } do |form| %>
         <div class="field field-short">
-          <%= form.label :language, "Answer in" %>
+          <%= form.label :language, "Reply in" %>
           <%= form.select :language, [["English", "english"], ["Hindi", "hindi"], ["Hinglish", "hinglish"]], { selected: @language || "english" } %>
         </div>
-        <%= form.submit "Get a helpful answer", class: "button button-primary" %>
+        <div class="chat-composer">
+          <div class="field chat-input-field">
+            <%= form.label :question, "Your message", class: "visually-hidden" %>
+            <%= form.text_area :question, rows: 2, maxlength: 2000, placeholder: "Type your question here…", required: true, data: { chat_input: true }, aria: { describedby: "chat-privacy-note" } %>
+          </div>
+          <%= form.button "Send", type: :submit, class: "button button-primary chat-send", data: { chat_submit: true } do %>
+            <span data-chat-submit-label>Send</span><span aria-hidden="true">&rarr;</span>
+          <% end %>
+        </div>
+        <span id="chat-privacy-note" class="field-help">Press Enter to send or Shift+Enter for a new line. Don't share passwords or sensitive personal details. Messages are sent to your configured AI provider.</span>
       <% end %>
-      <% if @answer.present? %>
-        <section class="answer-panel" aria-live="polite" aria-labelledby="answer-title">
-          <div class="answer-heading"><span class="eyebrow">A HELPFUL STARTING POINT</span><h2 id="answer-title">Your answer</h2></div>
-          <div class="answer-copy"><%= simple_format(@answer) %></div>
-          <p class="disclaimer">AI can make mistakes. For current scheme details or legal decisions, confirm with an official source.</p>
-        </section>
-      <% end %>
-    </div>
-    <div class="info-strip"><span aria-hidden="true">ⓘ</span><p>We aim to keep guidance clear and honest. Scheme rules can vary by location, so always verify details with an official government source.</p></div>
+    </section>
+    <div class="info-strip"><span aria-hidden="true">ⓘ</span><p>AI can make mistakes and does not replace legal advice. Scheme rules vary by location; check current details with an official government source.</p></div>
   </div>
 </main>

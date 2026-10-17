@@ -1,0 +1,27 @@
+<main class="page-shell">
+  <div class="container auth-container">
+    <div class="page-heading">
+      <%= link_to "← Back home", root_path, class: "back-link" %>
+      <span class="eyebrow">WELCOME BACK</span>
+      <h1>Sign in</h1>
+      <p>Your earnings are private to your account.</p>
+    </div>
+
+    <section class="workspace-card auth-card" aria-labelledby="sign-in-title">
+      <div class="workspace-intro"><span class="card-icon icon-purple" aria-hidden="true">↗</span><div><h2 id="sign-in-title">Pick up where you left off</h2><p>Use the email address you registered with.</p></div></div>
+      <% if @error %><div class="notice notice-error" role="alert"><%= @error %></div><% end %>
+      <%= form_with url: session_path, class: "stacked-form" do |form| %>
+        <div class="field">
+          <%= form.label :email, "Email address" %>
+          <%= form.email_field :email, value: @email, required: true, maxlength: 254, autocomplete: "email", inputmode: "email" %>
+        </div>
+        <div class="field">
+          <%= form.label :password, "Password" %>
+          <%= form.password_field :password, required: true, maxlength: 72, autocomplete: "current-password" %>
+        </div>
+        <%= form.submit "Sign in", class: "button button-primary button-full" %>
+      <% end %>
+      <p class="auth-switch">New to GigSaathi? <%= link_to "Create an account", new_user_path %></p>
+    </section>
+  </div>
+</main>
