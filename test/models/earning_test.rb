@@ -14,6 +14,20 @@ class EarningTest < ActiveSupport::TestCase
     assert_equal BigDecimal("1000"), earning.net_earnings
   end
 
+  test "treats blank expense values as zero" do
+    earning = Earning.new(
+      work_date: Date.current,
+      total_earnings: 600,
+      fuel_expenses: "",
+      food_expenses: nil,
+      other_expenses: "  "
+    )
+
+    assert earning.valid?
+    assert_equal BigDecimal("0"), earning.total_expenses
+    assert_equal BigDecimal("600"), earning.net_earnings
+  end
+
   test "rejects negative amounts" do
     earning = Earning.new(
       work_date: Date.current,

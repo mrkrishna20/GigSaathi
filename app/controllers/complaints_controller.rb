@@ -11,10 +11,10 @@ class ComplaintsController < ApplicationController
   end
 
   def create
-    @category = params[:category].to_s
-    @company_name = params[:company_name].to_s.strip
-    @description = params[:description].to_s.strip
-    @language = params[:language].to_s
+    @category = params[:category].to_s.strip
+    @company_name = sanitize_field(params[:company_name])
+    @description = sanitize_field(params[:description])
+    @language = params[:language].to_s.strip.downcase
 
     unless CATEGORIES.key?(@category) && %w[english hindi].include?(@language) &&
            @description.present? && @description.length <= 4_000 && @company_name.length <= 100
@@ -38,5 +38,11 @@ class ComplaintsController < ApplicationController
     Rails.logger.error("Complaint generation failed: #{error.message}")
     @error = "A complaint could not be generated right now. Please try again later."
     render :new, status: :service_unavailable
+  end
+
+  private
+
+  def sanitize_field(value)
+    value.to_s.strip.gsub(/[[:cntrl:]]+/, " ")
   end
 end

@@ -1,6 +1,8 @@
 class EarningsController < ApplicationController
+  PER_PAGE = 20
+
   def index
-    @earnings = Earning.order(work_date: :desc, created_at: :desc)
+    @earnings = Earning.ordered.limit(PER_PAGE)
     @earning = Earning.new(work_date: Date.current)
   end
 
@@ -10,7 +12,7 @@ class EarningsController < ApplicationController
     if @earning.save
       redirect_to earnings_path, notice: "Your earnings entry has been saved."
     else
-      @earnings = Earning.order(work_date: :desc, created_at: :desc)
+      @earnings = Earning.ordered.limit(PER_PAGE)
       render :index, status: :unprocessable_entity
     end
   end

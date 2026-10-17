@@ -10,8 +10,8 @@ class AssistantController < ApplicationController
   end
 
   def ask
-    @question = params[:question].to_s.strip
-    @language = params[:language].to_s
+    @question = sanitize_field(params[:question])
+    @language = normalize_language(params[:language])
 
     if @question.blank? || @question.length > 2_000 || !LANGUAGES.key?(@language)
       @error = "Enter a question (up to 2,000 characters) and choose a supported language."
@@ -29,5 +29,15 @@ class AssistantController < ApplicationController
     Rails.logger.error("Assistant request failed: #{error.message}")
     @error = "The AI assistant could not respond right now. Please try again later."
     render :index, status: :service_unavailable
+  end
+
+  private
+
+  def sanitize_field(value)
+    value.to_s.strip.gsub(/[[:cntrl:]]+/, " ")
+  end
+
+  def normalize_language(value)
+    value.to_s.strip.downcase
   end
 end
